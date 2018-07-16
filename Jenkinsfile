@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i /etc/ansible/jenkins/jenkins.pem **/target/*.war jenkins@${params.tomcat_dev}:/media/jenkins/tomcat/apache-tomcat-8.5.32-staging/webapps"
+                        sh "scp -i /etc/ansible/jenkins/jenkins.pem **/target/*.war jenkins@${params.tomcat_dev}:/etc/ansible/jenkins/tomcat/apache-tomcat-8.5.32-staging/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /etc/ansible/jenkins/jenkins.pem **/target/*.war jenkins@${params.tomcat_prod}:/media/jenkins/tomcat/apache-tomcat-8.5.32-prod/webapps"
+                        sh "scp -i /etc/ansible/jenkins/jenkins.pem **/target/*.war jenkins@${params.tomcat_prod}:/etc/ansible/jenkins/tomcat/apache-tomcat-8.5.32-prod/webapps"
                     }
                 }
             }
